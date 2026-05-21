@@ -66,6 +66,11 @@ func TestStaticFilesAreServed(t *testing.T) {
 		t.Fatalf("status = %d, want %d", rr.Code, http.StatusOK)
 	}
 
+	contentType := rr.Header().Get("Content-Type")
+	if !strings.Contains(contentType, "text/css") {
+		t.Fatalf("content-type = %q, want to contain %q", contentType, "text/css")
+	}
+
 	if _, err := io.ReadAll(rr.Body); err != nil {
 		t.Fatalf("failed to read response body: %v", err)
 	}

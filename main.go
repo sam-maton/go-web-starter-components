@@ -21,6 +21,7 @@ func newHandler() (http.Handler, error) {
 
 	render := func(w http.ResponseWriter, data pageData) {
 		if err := tmpl.ExecuteTemplate(w, "base", data); err != nil {
+			log.Printf("template render error: %v", err)
 			http.Error(w, "template render error", http.StatusInternalServerError)
 		}
 	}
