@@ -19,9 +19,9 @@ func newHandler() (http.Handler, error) {
 
 	mux := http.NewServeMux()
 
-	render := func(w http.ResponseWriter, data pageData) {
+	render := func(w http.ResponseWriter, r *http.Request, data pageData) {
 		if err := tmpl.ExecuteTemplate(w, "base", data); err != nil {
-			log.Printf("template render error: %v", err)
+			log.Printf("template render error for path %q template %q: %v", r.URL.Path, "base", err)
 			http.Error(w, "template render error", http.StatusInternalServerError)
 		}
 	}
@@ -31,11 +31,11 @@ func newHandler() (http.Handler, error) {
 			http.NotFound(w, r)
 			return
 		}
-		render(w, pageData{Title: "Home", Heading: "Home"})
+		render(w, r, pageData{Title: "Home", Heading: "Home"})
 	})
 
 	mux.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
-		render(w, pageData{Title: "About", Heading: "About"})
+		render(w, r, pageData{Title: "About", Heading: "About"})
 	})
 
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
@@ -46,7 +46,7 @@ func newHandler() (http.Handler, error) {
 func main() {
 	handler, err := newHandler()
 	if err != nil {
-		log.Fatalf("failed to initialize server: %v", err)
+		log.Fatalf("failed to initialize handler: %v", err)
 	}
 
 	log.Println("server listening on :8080")
