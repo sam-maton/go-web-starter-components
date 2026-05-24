@@ -7,21 +7,44 @@ import (
 )
 
 type pageData struct {
-	Title   string
-	Heading string
+	Title string
+}
+
+type templateCache map[string]*template.Template
+
+func newTemplateCache() (templateCache, error) {
+	pages := []string{"home", "about"}
+	cache := make(templateCache, len(pages))
+
+	for _, page := range pages {
+		tmpl, err := template.ParseFiles("templates/base.html", "templates/"+page+".html")
+		if err != nil {
+			return nil, err
+		}
+		cache[page] = tmpl
+	}
+
+	return cache, nil
 }
 
 func newHandler() (http.Handler, error) {
-	tmpl, err := template.ParseFiles("templates/base.html")
+	cache, err := newTemplateCache()
 	if err != nil {
 		return nil, err
 	}
 
 	mux := http.NewServeMux()
 
-	render := func(w http.ResponseWriter, r *http.Request, data pageData) {
+	render := func(w http.ResponseWriter, r *http.Request, name string, data pageData) {
+		tmpl, ok := cache[name]
+		if !ok {
+			log.Printf("template missing from cache for path %q template %q", r.URL.Path, name)
+			http.Error(w, "template render error", http.StatusInternalServerError)
+			return
+		}
+
 		if err := tmpl.ExecuteTemplate(w, "base", data); err != nil {
-			log.Printf("template render error for path %q template %q: %v", r.URL.Path, "base", err)
+			log.Printf("template render error for path %q template %q: %v", r.URL.Path, name, err)
 			http.Error(w, "template render error", http.StatusInternalServerError)
 		}
 	}
@@ -31,11 +54,11 @@ func newHandler() (http.Handler, error) {
 			http.NotFound(w, r)
 			return
 		}
-		render(w, r, pageData{Title: "Home", Heading: "Home"})
+		render(w, r, "home", pageData{Title: "Home"})
 	})
 
 	mux.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
-		render(w, r, pageData{Title: "About", Heading: "About"})
+		render(w, r, "about", pageData{Title: "About"})
 	})
 
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
