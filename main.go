@@ -53,7 +53,7 @@ func newHandler() (http.Handler, error) {
 	render := func(w http.ResponseWriter, r *http.Request, name string, data pageData) {
 		tmpl, ok := cache[name]
 		if !ok {
-			log.Printf("template missing from cache for path %q template %q available: %s", r.URL.Path, name, strings.Join(cache.names(), ", "))
+			log.Printf("template missing from cache for path %q template %q available templates: %s", r.URL.Path, name, strings.Join(cache.names(), ", "))
 			http.Error(w, "template render error", http.StatusInternalServerError)
 			return
 		}
