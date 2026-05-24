@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"path/filepath"
 )
 
 type pageData struct {
@@ -17,7 +18,10 @@ func newTemplateCache() (templateCache, error) {
 	cache := make(templateCache, len(pages))
 
 	for _, page := range pages {
-		tmpl, err := template.ParseFiles("templates/base.html", "templates/"+page+".html")
+		tmpl, err := template.ParseFiles(
+			filepath.Join("templates", "base.html"),
+			filepath.Join("templates", page+".html"),
+		)
 		if err != nil {
 			return nil, err
 		}
