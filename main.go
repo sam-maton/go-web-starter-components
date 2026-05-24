@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+	"sort"
 )
 
 type pageData struct {
@@ -15,7 +16,7 @@ type templateCache map[string]*template.Template
 
 func newTemplateCache() (templateCache, error) {
 	pages := []string{"home", "about"}
-	cache := make(templateCache, len(pages))
+	cache := make(templateCache)
 
 	for _, page := range pages {
 		tmpl, err := template.ParseFiles(
@@ -31,6 +32,15 @@ func newTemplateCache() (templateCache, error) {
 	return cache, nil
 }
 
+func (c templateCache) names() []string {
+	names := make([]string, 0, len(c))
+	for name := range c {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	return names
+}
+
 func newHandler() (http.Handler, error) {
 	cache, err := newTemplateCache()
 	if err != nil {
@@ -42,7 +52,7 @@ func newHandler() (http.Handler, error) {
 	render := func(w http.ResponseWriter, r *http.Request, name string, data pageData) {
 		tmpl, ok := cache[name]
 		if !ok {
-			log.Printf("template missing from cache for path %q template %q", r.URL.Path, name)
+			log.Printf("template missing from cache for path %q template %q available %v", r.URL.Path, name, cache.names())
 			http.Error(w, "template render error", http.StatusInternalServerError)
 			return
 		}
