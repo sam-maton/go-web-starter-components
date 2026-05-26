@@ -1,3 +1,3 @@
 module github.com/sam-maton/go-web-starter-components
 
-go 1.22
+go 1.25.5

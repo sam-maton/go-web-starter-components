@@ -1,28 +1,27 @@
 package main
 
 import (
-	"html/template"
 	"log"
 	"net/http"
 )
 
-type pageData struct {
-	Title   string
-	Heading string
-}
-
 func newHandler() (http.Handler, error) {
-	tmpl, err := template.ParseFiles("templates/base.html")
+	templateCache, err := newTemplateCahce()
 	if err != nil {
 		return nil, err
 	}
 
 	mux := http.NewServeMux()
 
-	render := func(w http.ResponseWriter, r *http.Request, data pageData) {
-		if err := tmpl.ExecuteTemplate(w, "base", data); err != nil {
-			log.Printf("template render error for path %q template %q: %v", r.URL.Path, "base", err)
-			http.Error(w, "template render error", http.StatusInternalServerError)
+	render := func(w http.ResponseWriter, name string) {
+		t, ok := templateCache[name]
+		if !ok {
+			http.Error(w, "template not found", http.StatusInternalServerError)
+			return
+		}
+
+		if err := t.ExecuteTemplate(w, "base", nil); err != nil {
+			http.Error(w, "failed to render template", http.StatusInternalServerError)
 		}
 	}
 
@@ -31,11 +30,12 @@ func newHandler() (http.Handler, error) {
 			http.NotFound(w, r)
 			return
 		}
-		render(w, r, pageData{Title: "Home", Heading: "Home"})
+
+		render(w, "home.html")
 	})
 
 	mux.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
-		render(w, r, pageData{Title: "About", Heading: "About"})
+		render(w, "about.html")
 	})
 
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
@@ -49,7 +49,7 @@ func main() {
 		log.Fatalf("failed to initialize handler: %v", err)
 	}
 
-	log.Println("server listening on :8080")
+	log.Println("server listening on http://localhost:8080")
 	if err := http.ListenAndServe(":8080", handler); err != nil {
 		log.Fatal(err)
 	}
