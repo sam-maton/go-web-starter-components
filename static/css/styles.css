@@ -1,0 +1,23 @@
+:root{
+  --primary-hue: 220;
+
+  --primary-base: hsl(var(--primary-hue), 100%, 50%);
+
+  --hover-opacity: 0.1;
+  --active-opacity: 0.3;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+main{
+  padding: 2rem;
+}
+
+.buttons-container{
+  display: flex;
+  gap: 1rem;
+}
