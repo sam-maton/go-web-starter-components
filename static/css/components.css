@@ -1,4 +1,6 @@
-button{
+/* BUTTONS */
+
+button {
   background-color: var(--primary-base);
   color: white;
   border: none;
@@ -9,11 +11,11 @@ button{
   transition: scale 0.2s;
 }
 
-button:hover{
+button:hover {
   scale: 1.02;
 }
 
-button::before{
+button::before {
   position: absolute;
   content: "";
   inset: 0;
@@ -23,11 +25,25 @@ button::before{
   transition: opacity 0.2s;
 }
 
-button:hover::before{
+button:hover::before {
   opacity: var(--hover-opacity);
 }
 
-button:active::before{
+button:active::before {
   opacity: var(--active-opacity);
 }
 
+/* INPUTS */
+input,
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary-base);
+  outline: none;
+}

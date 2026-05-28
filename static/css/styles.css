@@ -1,7 +1,7 @@
-:root{
+:root {
   --primary-hue: 220;
 
-  --primary-base: hsl(var(--primary-hue), 100%, 50%);
+  --primary-base: hsl(var(--primary-hue), 80%, 50%);
 
   --hover-opacity: 0.1;
   --active-opacity: 0.3;
@@ -13,11 +13,17 @@ body {
   padding: 0;
 }
 
-main{
+main {
   padding: 2rem;
 }
 
-.buttons-container{
+.buttons-container {
   display: flex;
   gap: 1rem;
+}
+
+.component-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
