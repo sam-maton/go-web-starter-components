@@ -12,7 +12,7 @@ func main() {
 	http.Handle("GET /static/", http.StripPrefix("/static", http.FileServer(http.Dir("./ui/static/"))))
 
 	http.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		t, err := template.ParseFiles("ui/html/pages/home.html")
+		t, err := template.ParseFiles("ui/html/base.html", "ui/html/pages/home.html")
 		if err != nil {
 			w.Write([]byte(err.Error()))
 		}
