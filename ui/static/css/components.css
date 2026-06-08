@@ -50,3 +50,9 @@ select:focus {
   border-color: var(--primary-base);
   outline: none;
 }
+
+/* LISTS */
+nav > ul,
+nav > ol {
+  list-style: none;
+}

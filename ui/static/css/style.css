@@ -1,5 +1,6 @@
 :root {
   --primary-hue: 220;
+  --neutral-hue: 210;
 
   --primary-base: hsl(var(--primary-hue), 80%, 50%);
 
@@ -12,7 +13,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "JetBrains Mono", monospace;
   margin: 0;
   padding: 0;
 }
