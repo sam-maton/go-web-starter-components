@@ -2,7 +2,6 @@ package main
 
 import (
 	"html/template"
-	"net/http"
 	"path/filepath"
 )
 
@@ -38,17 +37,4 @@ func newTemplateCache() (TemplateCache, error) {
 	}
 
 	return cache, nil
-}
-
-func (c TemplateCache) render(page string, w http.ResponseWriter, r *http.Request) {
-	t, ok := c[page]
-	if !ok {
-		http.Error(w, "Cannot load page", 500)
-	}
-
-	err := t.Execute(w, nil)
-	if err != nil {
-		http.Error(w, "Cannot load page", 500)
-	}
-
 }
