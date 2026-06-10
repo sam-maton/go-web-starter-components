@@ -2,17 +2,13 @@
   box-sizing: border-box;
 }
 
-main {
-  padding: 2rem;
-}
-
 header {
   display: flex;
-  align-items: center;
   background-color: var(--surface);
   border-bottom: 1px solid var(--border);
   gap: 2.5rem;
-  padding: 0 1rem;
+  padding: 1rem;
+  height: 5rem;
 
   nav {
     align-content: center;
@@ -23,4 +19,34 @@ header {
     display: flex;
     gap: 0.5rem;
   }
+}
+
+main {
+  display: flex;
+  gap: 2rem;
+}
+
+aside {
+  width: 12rem;
+  background-color: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 1rem;
+  height: calc(100vh - 5rem);
+
+  svg {
+    background-color: color-mix(
+      in hsl,
+      var(--accent-container) var(--high-opacity),
+      transparent
+    );
+    padding: 0.25rem;
+    box-sizing: content-box;
+    border-radius: 0.25rem;
+    color: var(--text-inverse);
+  }
+}
+
+.sidebar-header {
+  display: flex;
+  gap: 0.5rem;
 }

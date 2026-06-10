@@ -21,8 +21,11 @@
     </script>
   </head>
   <body>
-    {{template "topNav" .}}
-    <main>{{template "main" .}}</main>
+    {{template "topBar" .}}
+    <main>
+      {{template "sideBar" .}}
+      <div>{{template "main" .}}</div>
+    </main>
   </body>
   <script src="/static/js/app.js"></script>
 </html>
