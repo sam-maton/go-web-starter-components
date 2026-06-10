@@ -10,11 +10,19 @@
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/static/css/variables.css" />
     <link rel="stylesheet" href="/static/css/style.css" />
     <link rel="stylesheet" href="/static/css/components.css" />
+    <script>
+      const storedTheme = localStorage.getItem("theme");
+      if (storedTheme) {
+        document.documentElement.setAttribute("data-theme", storedTheme);
+      }
+    </script>
   </head>
   <body>
     {{template "topNav" .}}
     <main>{{template "main" .}}</main>
   </body>
+  <script src="/static/js/app.js"></script>
 </html>

@@ -1,34 +1,26 @@
-:root {
-  --primary-hue: 220;
-  --neutral-hue: 210;
-
-  --primary-base: hsl(var(--primary-hue), 80%, 50%);
-
-  --hover-opacity: 0.1;
-  --active-opacity: 0.3;
-}
-
 * {
   box-sizing: border-box;
-}
-
-body {
-  font-family: "JetBrains Mono", monospace;
-  margin: 0;
-  padding: 0;
 }
 
 main {
   padding: 2rem;
 }
 
-.buttons-container {
+header {
   display: flex;
-  gap: 1rem;
-}
+  align-items: center;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  gap: 2.5rem;
+  padding: 0 1rem;
 
-.component-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  nav {
+    align-content: center;
+    flex-grow: 1;
+  }
+
+  nav > ul {
+    display: flex;
+    gap: 0.5rem;
+  }
 }

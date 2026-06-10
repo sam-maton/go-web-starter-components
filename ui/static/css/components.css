@@ -2,57 +2,55 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: var(--bg);
+  font-family: "JetBrains Mono", monospace;
+  margin: 0;
+  padding: 0;
+}
+
+/* LINKS */
+a {
+  text-decoration: none;
+  color: var(--text-accent);
+}
+
+a:hover {
+  text-decoration: underline currentColor;
+}
+
 /* BUTTONS */
-button {
-  background-color: var(--primary-base);
-  color: white;
+button[data-icon] {
+  background: none;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
   cursor: pointer;
-  position: relative;
-  transition: scale 0.2s;
+  border-radius: 999px;
+  box-sizing: content-box;
+  padding: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text);
 }
 
-button:hover {
-  scale: 1.02;
+button[data-icon]:hover {
+  background-color: color-mix(
+    in hsl,
+    var(--accent-container) var(--hover-opacity),
+    transparent
+  );
 }
 
-button::before {
-  position: absolute;
-  content: "";
-  inset: 0;
-  background-color: white;
-  border-radius: 4px;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-button:hover::before {
-  opacity: var(--hover-opacity);
-}
-
-button:active::before {
-  opacity: var(--active-opacity);
-}
-
-/* INPUTS */
-input,
-select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.2s;
-}
-
-input:focus,
-select:focus {
-  border-color: var(--primary-base);
-  outline: none;
+button[data-icon]:active {
+  background-color: color-mix(
+    in hsl,
+    var(--accent-container) var(--active-opacity),
+    transparent
+  );
 }
 
 /* LISTS */
 nav > ul,
 nav > ol {
   list-style: none;
+  padding: 0;
 }
