@@ -26,12 +26,19 @@ main {
   gap: 2rem;
 }
 
-aside {
-  width: 12rem;
+/* Sidebar */
+
+.sidebar {
+  width: 14rem;
   background-color: var(--surface);
   border-right: 1px solid var(--border);
   padding: 1rem;
   height: calc(100vh - 5rem);
+}
+
+.sidebar-header {
+  display: flex;
+  gap: 0.5rem;
 
   svg {
     background-color: color-mix(
@@ -46,7 +53,11 @@ aside {
   }
 }
 
-.sidebar-header {
-  display: flex;
-  gap: 0.5rem;
+.sidebar-content {
+  margin-top: 1rem;
+
+  button {
+    width: 100%;
+    text-align: left;
+  }
 }

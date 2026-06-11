@@ -1,5 +1,5 @@
 {{define "sideBar"}}
-<aside>
+<aside class="sidebar">
   <div class="sidebar-header">
     <svg
       width="36"
@@ -30,5 +30,6 @@
       <p>v1.0.0</p>
     </div>
   </div>
+  <div>{{template "sideBarContent" .}}</div>
 </aside>
 {{end}}

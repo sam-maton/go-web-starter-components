@@ -21,6 +21,44 @@ a:hover {
 }
 
 /* BUTTONS */
+
+button {
+  font-family: inherit;
+  background-color: var(--accent-container);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  color: var(--text-inverse);
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+button[data-text] {
+  background-color: transparent;
+  color: var(--text);
+}
+
+button[data-text]:hover {
+  background-color: color-mix(
+    in hsl,
+    var(--accent-container) var(--hover-opacity),
+    transparent
+  );
+}
+
+button[data-text]:active {
+  background-color: color-mix(
+    in hsl,
+    var(--accent-container) var(--active-opacity),
+    transparent
+  );
+}
+
+/* ICON BUTTON */
 button[data-icon] {
   background: none;
   border: none;

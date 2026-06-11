@@ -2,4 +2,34 @@
 <!--  -->
 {{define "main"}}
 <h1>Hello World</h1>
+{{end}} {{define "sideBarContent"}}
+<section class="sidebar-content">
+  <nav>
+    <ul>
+      <li>
+        <button data-text>
+          <svg width="24" height="24" aria-hidden="true">
+            <use href="/static/svg/sprite.svg#icon-typography"></use>
+          </svg>
+          Typography
+        </button>
+      </li>
+      <li>
+        <button data-text>
+          <svg width="24" height="24" aria-hidden="true">
+            <use href="/static/svg/sprite.svg#icon-buttons"></use>
+          </svg>
+          Buttons
+        </button>
+
+        <button data-text>
+          <svg width="24" height="24" aria-hidden="true">
+            <use href="/static/svg/sprite.svg#icon-form-elements"></use>
+          </svg>
+          Form Elements
+        </button>
+      </li>
+    </ul>
+  </nav>
+</section>
 {{end}}
