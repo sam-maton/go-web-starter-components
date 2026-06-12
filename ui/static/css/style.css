@@ -41,11 +41,7 @@ main {
   gap: 0.5rem;
 
   svg {
-    background-color: color-mix(
-      in hsl,
-      var(--accent-container) var(--high-opacity),
-      transparent
-    );
+    background-color: var(--container-accent);
     padding: 0.25rem;
     box-sizing: content-box;
     border-radius: 0.25rem;

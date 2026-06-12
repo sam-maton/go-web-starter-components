@@ -5,6 +5,7 @@
 
 body {
   background-color: var(--bg);
+  color: var(--text);
   font-family: "JetBrains Mono", monospace;
   margin: 0;
   padding: 0;
@@ -24,7 +25,7 @@ a:hover {
 
 button {
   font-family: inherit;
-  background-color: var(--accent-container);
+  background-color: var(--container-accent);
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   border: none;
@@ -43,19 +44,11 @@ button[data-text] {
 }
 
 button[data-text]:hover {
-  background-color: color-mix(
-    in hsl,
-    var(--accent-container) var(--hover-opacity),
-    transparent
-  );
+  background-color: var(--transparent-container-accent-hover);
 }
 
 button[data-text]:active {
-  background-color: color-mix(
-    in hsl,
-    var(--accent-container) var(--active-opacity),
-    transparent
-  );
+  background-color: var(--transparent-container-accent-active);
 }
 
 /* ICON BUTTON */
@@ -72,19 +65,11 @@ button[data-icon] {
 }
 
 button[data-icon]:hover {
-  background-color: color-mix(
-    in hsl,
-    var(--accent-container) var(--hover-opacity),
-    transparent
-  );
+  background-color: var(--transparent-container-accent-hover);
 }
 
 button[data-icon]:active {
-  background-color: color-mix(
-    in hsl,
-    var(--accent-container) var(--active-opacity),
-    transparent
-  );
+  background-color: var(--transparent-container-accent-active);
 }
 
 /* LISTS */

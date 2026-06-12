@@ -1,8 +1,6 @@
 {{define "title"}}Home{{end}}
-<!--  -->
-{{define "main"}}
-<h1>Hello World</h1>
-{{end}} {{define "sideBarContent"}}
+<!-- Sidebar -->
+{{define "sideBarContent"}}
 <section class="sidebar-content">
   <nav>
     <ul>
@@ -31,5 +29,16 @@
       </li>
     </ul>
   </nav>
+</section>
+{{end}}
+<!-- Main Page -->
+{{define "main"}}
+<section>
+  <h2>Welcome to GWS Components</h2>
+  <p>
+    This is a collection of reusable UI components built with Go and
+    WebAssembly. Explore the sidebar to see the available components and their
+    documentation.
+  </p>
 </section>
 {{end}}

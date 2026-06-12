@@ -28,11 +28,6 @@
     hsl(var(--primary-hue), 10%, 40%)
   );
 
-  --accent-container: light-dark(
-    hsl(var(--primary-hue), 80%, 40%),
-    hsl(var(--primary-hue), 80%, 70%)
-  );
-
   --text: light-dark(
     hsl(var(--primary-hue), 10%, 20%),
     hsl(var(--primary-hue), 10%, 95%)
@@ -44,7 +39,7 @@
   );
 
   --text-accent: light-dark(
-    hsl(var(--primary-hue), 85%, 45%),
+    hsl(var(--primary-hue), 85%, 35%),
     hsl(var(--primary-hue), 80%, 70%)
   );
 
@@ -53,9 +48,42 @@
     hsl(var(--primary-hue), 80%, 45%)
   );
 
-  --hover-opacity: 10%;
-  --active-opacity: 20%;
-  --high-opacity: 90%;
+  --solid-hover-opacity: 20%;
+  --solid-active-opacity: 30%;
+
+  --transparent-hover-opacity: 70%;
+  --transparent-active-opacity: 60%;
+
+  --state-mix: light-dark(white, black);
+
+  --container-accent: light-dark(
+    hsl(var(--primary-hue), 80%, 45%),
+    hsl(var(--primary-hue), 80%, 70%)
+  );
+
+  --container-accent-hover: color-mix(
+    in hsl,
+    var(--container-accent),
+    var(--state-mix) var(--solid-hover-opacity)
+  );
+
+  --container-accent-active: color-mix(
+    in hsl,
+    var(--container-accent),
+    var(--state-mix) var(--solid-active-opacity)
+  );
+
+  --transparent-container-accent-hover: color-mix(
+    in hsl,
+    var(--container-accent),
+    var(--state-mix) var(--transparent-hover-opacity)
+  );
+
+  --transparent-container-accent-active: color-mix(
+    in hsl,
+    var(--container-accent),
+    var(--state-mix) var(--transparent-active-opacity)
+  );
 }
 
 :root[data-theme="light"] {
