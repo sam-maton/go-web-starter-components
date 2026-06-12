@@ -51,10 +51,10 @@
   --solid-hover-opacity: 20%;
   --solid-active-opacity: 30%;
 
-  --transparent-hover-opacity: 70%;
-  --transparent-active-opacity: 60%;
+  --transparent-hover-opacity: 75%;
+  --transparent-active-opacity: 65%;
 
-  --state-mix: light-dark(white, black);
+  --state-mix: light-dark(transparent, transparent);
 
   --container-accent: light-dark(
     hsl(var(--primary-hue), 80%, 45%),

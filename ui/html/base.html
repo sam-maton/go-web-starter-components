@@ -22,9 +22,9 @@
   </head>
   <body>
     {{template "topBar" .}}
-    <main>
+    <main class="app-shell">
       {{template "sideBar" .}}
-      <div>{{template "main" .}}</div>
+      <div class="content-scroll">{{template "main" .}}</div>
     </main>
   </body>
   <script src="/static/js/app.js"></script>

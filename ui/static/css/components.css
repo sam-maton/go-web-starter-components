@@ -3,6 +3,19 @@
   margin: 0;
 }
 
+/* TYPOGRAPHY */
+
+h1,
+h2 {
+  margin-bottom: 0.5rem;
+}
+
+h2[data-highlight] {
+  border-left: 4px solid var(--container-accent);
+  padding-left: 0.3rem;
+  border-radius: 3px;
+}
+
 body {
   background-color: var(--bg);
   color: var(--text);

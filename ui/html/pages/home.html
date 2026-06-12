@@ -33,12 +33,31 @@
 {{end}}
 <!-- Main Page -->
 {{define "main"}}
-<section>
-  <h2>Welcome to GWS Components</h2>
-  <p>
-    This is a collection of reusable UI components built with Go and
-    WebAssembly. Explore the sidebar to see the available components and their
-    documentation.
-  </p>
+<section class="main-content">
+  <section>
+    <h1>Web Starter Elements</h1>
+    <p>
+      This is a collection of styled native HTML elements. The goal is to help
+      provide a simpler starting point for building web applications, without
+      the need to rely on third-party component libraries. The components are
+      built using native HTML elements and styled with CSS. Data attributes are
+      used to provide additional styling options, such as different button
+      variants.
+    </p>
+  </section>
+  <section>
+    <h2 data-highlight>Typography</h2>
+    <div class="element-section"></div>
+  </section>
+
+  <section>
+    <h2 data-highlight>Buttons</h2>
+    <div class="element-section"></div>
+  </section>
+
+  <section>
+    <h2 data-highlight>Form Elements</h2>
+    <div class="element-section"></div>
+  </section>
 </section>
 {{end}}
