@@ -10,10 +10,25 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.25rem;
+}
+
+h1[data-highlight],
 h2[data-highlight] {
   border-left: 4px solid var(--container-accent);
   padding-left: 0.3rem;
   border-radius: 3px;
+}
+
+h3[data-highlight],
+h4[data-highlight],
+h5[data-highlight],
+h6[data-highlight] {
+  color: var(--text-accent);
 }
 
 body {

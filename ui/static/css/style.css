@@ -95,4 +95,7 @@ main.app-shell {
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: 0.5rem;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(2, 50%);
 }
