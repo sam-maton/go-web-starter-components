@@ -19,12 +19,22 @@
           </svg>
           Buttons
         </a>
+      </li>
 
+      <li>
         <a data-button href="#form-elements">
           <svg width="24" height="24" aria-hidden="true">
             <use href="/static/svg/sprite.svg#icon-form-elements"></use>
           </svg>
           Form Elements
+        </a>
+      </li>
+      <li>
+        <a data-button href="#data-tables">
+          <svg width="24" height="24" aria-hidden="true">
+            <use href="/static/svg/sprite.svg#icon-table"></use>
+          </svg>
+          Data Tables
         </a>
       </li>
     </ul>
@@ -74,6 +84,18 @@
           </ol>
         </div>
       </div>
+      <div>
+        <h3 data-highlight>Highlighted Headings</h3>
+        <p class="element-sub-heading">
+          Use 'data-highlight' on the heading element.
+        </p>
+        <h1 data-highlight>Heading level one</h1>
+        <h2 data-highlight>Heading level two</h2>
+        <h3 data-highlight>Heading level three</h3>
+        <h4 data-highlight>Heading level four</h4>
+        <h5 data-highlight>Heading level five</h5>
+        <h6 data-highlight>Heading level six</h6>
+      </div>
     </div>
   </section>
 
@@ -86,8 +108,9 @@
           <button>Primary</button>
           <button>
             <svg width="20" height="20" aria-hidden="true">
-              <use href="/static/svg/sprite.svg#icon-home"></use></svg
-            >Primary Icon
+              <use href="/static/svg/sprite.svg#icon-home"></use>
+            </svg>
+            Primary Icon
           </button>
           <button disabled>Disabled</button>
         </div>
@@ -95,14 +118,50 @@
 
       <div>
         <h3 data-highlight>Text Variant</h3>
+        <p class="element-sub-heading">Use 'data-text' for the text variant.</p>
         <div class="element-preview">
           <button data-text>Primary</button>
           <button data-text>
             <svg width="20" height="20" aria-hidden="true">
-              <use href="/static/svg/sprite.svg#icon-home"></use></svg
-            >Primary Icon
+              <use href="/static/svg/sprite.svg#icon-home"></use>
+            </svg>
+            Primary Icon
           </button>
           <button data-text disabled>Disabled</button>
+        </div>
+      </div>
+
+      <div>
+        <h3 data-highlight>Outline Variant</h3>
+        <p class="element-sub-heading">
+          Use 'data-outline' for the outlined variant.
+        </p>
+        <div class="element-preview">
+          <button data-outline>Primary</button>
+          <button data-outline>
+            <svg width="20" height="20" aria-hidden="true">
+              <use href="/static/svg/sprite.svg#icon-home"></use>
+            </svg>
+            Primary Icon
+          </button>
+          <button data-outline disabled>Disabled</button>
+        </div>
+      </div>
+      <div>
+        <h3 data-highlight>Icon Button Variant</h3>
+        <p class="element-sub-heading">Use 'data-icon' for the icon variant.</p>
+        <div class="element-preview">
+          <button data-icon>
+            <svg width="24" height="24" aria-hidden="true">
+              <use href="/static/svg/sprite.svg#icon-home"></use>
+            </svg>
+          </button>
+
+          <button data-icon disabled>
+            <svg width="24" height="24" aria-hidden="true">
+              <use href="/static/svg/sprite.svg#icon-home"></use>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -110,6 +169,32 @@
 
   <section id="form-elements">
     <h2 data-highlight>Form Elements</h2>
+    <div class="element-section">
+      <div>
+        <h3 data-highlight>Text Inputs</h3>
+        <div class="element-preview--column">
+          <div class="element--form">
+            <label for="userName">User Name</label>
+            <input id="userName" type="text" />
+          </div>
+
+          <div class="element--form">
+            <label for="description">Description</label>
+            <textarea id="description" rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 data-highlight>Checkboxes</h3>
+      </div>
+      <div>
+        <h3 data-highlight>Selects</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="data-tables">
+    <h2 data-highlight>Data Tables</h2>
     <div class="element-section">
       <div>
         <h3></h3>
