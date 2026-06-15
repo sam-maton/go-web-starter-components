@@ -49,6 +49,29 @@ a:hover {
   text-decoration: underline currentColor;
 }
 
+a[data-button] {
+  background-color: transparent;
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+a[data-button]:hover {
+  background-color: var(--transparent-container-accent-hover);
+  text-decoration: none;
+}
+
+a[data-button]:active {
+  background-color: var(--transparent-container-accent-active);
+  text-decoration: none;
+}
+
 /* BUTTONS */
 
 button {

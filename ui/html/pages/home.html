@@ -5,27 +5,27 @@
   <nav>
     <ul>
       <li>
-        <button data-text>
+        <a data-button href="#typography" type="">
           <svg width="24" height="24" aria-hidden="true">
             <use href="/static/svg/sprite.svg#icon-typography"></use>
           </svg>
           Typography
-        </button>
+        </a>
       </li>
       <li>
-        <button data-text>
+        <a data-button href="#buttons">
           <svg width="24" height="24" aria-hidden="true">
             <use href="/static/svg/sprite.svg#icon-buttons"></use>
           </svg>
           Buttons
-        </button>
+        </a>
 
-        <button data-text>
+        <a data-button href="#form-elements">
           <svg width="24" height="24" aria-hidden="true">
             <use href="/static/svg/sprite.svg#icon-form-elements"></use>
           </svg>
           Form Elements
-        </button>
+        </a>
       </li>
     </ul>
   </nav>
@@ -45,7 +45,7 @@
       variants.
     </p>
   </section>
-  <section>
+  <section id="typography">
     <h2 data-highlight>Typography</h2>
     <div class="element-section">
       <div>
@@ -59,30 +59,37 @@
       </div>
       <div>
         <h3 data-highlight>Lists</h3>
-        <ul>
-          <li>Unordered list item 1</li>
-          <li>Unordered list item 2</li>
-          <li>Unordered list item 3</li>
-          <li>Unordered list item 4</li>
-        </ul>
-        <ol>
-          <li>Ordered list item 1</li>
-          <li>Ordered list item 2</li>
-          <li>Ordered list item 3</li>
-          <li>Ordered list item 4</li>
-        </ol>
+        <div class="element-preview">
+          <ul>
+            <li>Unordered list item 1</li>
+            <li>Unordered list item 2</li>
+            <li>Unordered list item 3</li>
+            <li>Unordered list item 4</li>
+          </ul>
+          <ol>
+            <li>Ordered list item 1</li>
+            <li>Ordered list item 2</li>
+            <li>Ordered list item 3</li>
+            <li>Ordered list item 4</li>
+          </ol>
+        </div>
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="buttons">
     <h2 data-highlight>Buttons</h2>
     <div class="element-section"></div>
   </section>
 
-  <section>
+  <section id="form-elements">
     <h2 data-highlight>Form Elements</h2>
-    <div class="element-section"></div>
+    <div class="element-section">
+      <div>
+        <h3></h3>
+      </div>
+      <div></div>
+    </div>
   </section>
 </section>
 {{end}}
