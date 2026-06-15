@@ -59,7 +59,7 @@
       </div>
       <div>
         <h3 data-highlight>Lists</h3>
-        <div class="element-preview">
+        <div class="element-preview--column">
           <ul>
             <li>Unordered list item 1</li>
             <li>Unordered list item 2</li>
@@ -79,7 +79,33 @@
 
   <section id="buttons">
     <h2 data-highlight>Buttons</h2>
-    <div class="element-section"></div>
+    <div class="element-section">
+      <div>
+        <h3 data-highlight>Standard Variant</h3>
+        <div class="element-preview">
+          <button>Primary</button>
+          <button>
+            <svg width="20" height="20" aria-hidden="true">
+              <use href="/static/svg/sprite.svg#icon-home"></use></svg
+            >Primary Icon
+          </button>
+          <button disabled>Disabled</button>
+        </div>
+      </div>
+
+      <div>
+        <h3 data-highlight>Text Variant</h3>
+        <div class="element-preview">
+          <button data-text>Primary</button>
+          <button data-text>
+            <svg width="20" height="20" aria-hidden="true">
+              <use href="/static/svg/sprite.svg#icon-home"></use></svg
+            >Primary Icon
+          </button>
+          <button data-text disabled>Disabled</button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="form-elements">

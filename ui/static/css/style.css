@@ -102,6 +102,11 @@ main.app-shell {
 
 .element-preview {
   display: flex;
+  gap: 1rem;
+}
+
+.element-preview--column {
+  display: flex;
   flex-direction: column;
   gap: 1rem;
 }

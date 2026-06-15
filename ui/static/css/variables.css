@@ -33,9 +33,19 @@
     hsl(var(--primary-hue), 10%, 95%)
   );
 
+  --text-disabled: light-dark(
+    hsl(var(--primary-hue), 0%, 40%),
+    hsl(var(--primary-hue), 0%, 65%)
+  );
+
   --text-inverse: light-dark(
     hsl(var(--primary-hue), 10%, 95%),
     hsl(var(--primary-hue), 10%, 15%)
+  );
+
+  --text-inverse-disabled: light-dark(
+    hsl(var(--primary-hue), 0%, 35%),
+    hsl(var(--primary-hue), 0%, 65%)
   );
 
   --text-accent: light-dark(
@@ -48,8 +58,8 @@
     hsl(var(--primary-hue), 80%, 45%)
   );
 
-  --solid-hover-opacity: 20%;
-  --solid-active-opacity: 30%;
+  --solid-hover-opacity: 10%;
+  --solid-active-opacity: 20%;
 
   --transparent-hover-opacity: 75%;
   --transparent-active-opacity: 65%;
@@ -71,6 +81,11 @@
     in hsl,
     var(--container-accent),
     var(--state-mix) var(--solid-active-opacity)
+  );
+
+  --container-accent-disabled: light-dark(
+    hsl(var(--primary-hue), 5%, 80%),
+    hsl(var(--primary-hue), 5%, 30%)
   );
 
   --transparent-container-accent-hover: color-mix(

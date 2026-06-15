@@ -87,6 +87,22 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  user-select: none;
+  height: 40px;
+}
+
+button:hover {
+  background-color: var(--container-accent-hover);
+}
+
+button:active {
+  background-color: var(--container-accent-active);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: var(--container-accent-disabled);
+  color: var(--text-inverse-disabled);
 }
 
 button[data-text] {
@@ -100,6 +116,12 @@ button[data-text]:hover {
 
 button[data-text]:active {
   background-color: var(--transparent-container-accent-active);
+}
+
+button[data-text]:disabled {
+  cursor: not-allowed;
+  background-color: transparent;
+  color: var(--text-disabled);
 }
 
 /* ICON BUTTON */
