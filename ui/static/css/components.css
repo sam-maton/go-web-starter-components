@@ -211,13 +211,20 @@ nav > ol {
 }
 
 /* IPUTS */
+
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+}
+
 input,
 textarea {
   padding: 0.5rem;
   border: 1.5px solid var(--border);
-  border-radius: 4px;
+  border-radius: 0.25rem;
   background-color: var(--surface-high);
   font-size: 16px;
+  max-width: 100%;
 }
 
 input:hover,
@@ -228,4 +235,30 @@ textarea:hover {
 input:focus-visible,
 textarea:focus-visible {
   outline-color: var(--outline-accent);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--container-accent);
+}
+
+input[type="checkbox"]:hover {
+  accent-color: var(--container-accent-hover);
+}
+
+/* TABLE */
+
+table {
+  border-collapse: collapse;
+  border: 2px solid var(--border);
+}
+
+tbody th,
+thead {
+  background-color: var(--surface-accent);
+}
+
+th,
+td {
+  padding: 5px;
+  border: 1px solid var(--border);
 }

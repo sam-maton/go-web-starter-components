@@ -3,6 +3,14 @@
 
   --primary-hue: 220;
 
+  --solid-hover-opacity: 10%;
+  --solid-active-opacity: 20%;
+
+  --transparent-hover-opacity: 75%;
+  --transparent-active-opacity: 65%;
+
+  --state-mix: light-dark(transparent, transparent);
+
   --bg: light-dark(
     hsl(var(--primary-hue), 10%, 90%),
     hsl(var(--primary-hue), 10%, 10%)
@@ -16,6 +24,11 @@
   --surface-high: light-dark(
     hsl(var(--primary-hue), 10%, 100%),
     hsl(var(--primary-hue), 10%, 20%)
+  );
+
+  --surface-accent: light-dark(
+    hsl(var(--primary-hue), 25%, 87%),
+    hsl(var(--primary-hue), 20%, 20%)
   );
 
   --border: light-dark(
@@ -72,14 +85,6 @@
     hsl(var(--primary-hue), 85%, 60%),
     hsl(var(--primary-hue), 80%, 45%)
   );
-
-  --solid-hover-opacity: 10%;
-  --solid-active-opacity: 20%;
-
-  --transparent-hover-opacity: 75%;
-  --transparent-active-opacity: 65%;
-
-  --state-mix: light-dark(transparent, transparent);
 
   --container-accent: light-dark(
     hsl(var(--primary-hue), 80%, 45%),
