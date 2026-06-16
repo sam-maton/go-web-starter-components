@@ -218,30 +218,43 @@ fieldset {
 }
 
 input,
-textarea {
+textarea,
+select {
   padding: 0.5rem;
   border: 1.5px solid var(--border);
   border-radius: 0.25rem;
   background-color: var(--surface-high);
   font-size: 16px;
   max-width: 100%;
+  min-width: 10rem;
+}
+
+input,
+select {
+  height: 38px;
 }
 
 input:hover,
-textarea:hover {
+textarea:hover,
+select:hover {
   border: 1.5px solid var(--border-hover);
 }
 
 input:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible,
+select:focus-visible {
   outline-color: var(--outline-accent);
 }
 
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
   accent-color: var(--container-accent);
+  height: auto;
+  min-width: auto;
 }
 
-input[type="checkbox"]:hover {
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
   accent-color: var(--container-accent-hover);
 }
 

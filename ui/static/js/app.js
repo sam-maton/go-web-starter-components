@@ -15,3 +15,10 @@ themeToggle.addEventListener("click", () => {
   root.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
 });
+
+const colorTheme = document.querySelector("#color-theme");
+colorTheme.addEventListener("change", () => {
+  const value = colorTheme.value;
+  const root = document.querySelector(":root");
+  root.style.setProperty("--primary-hue", value);
+});
