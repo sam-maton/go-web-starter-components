@@ -31,6 +31,13 @@
     hsl(var(--primary-hue), 20%, 20%)
   );
 
+  --backdrop: light-dark(
+    hsl(var(--primary-hue), 0%, 20%),
+    hsl(var(--primary-hue), 0%, 80%)
+  );
+
+  --backdrop-resting: color-mix(in hsl, var(--backdrop), var(--state-mix) 20%);
+
   --border: light-dark(
     hsl(var(--primary-hue), 10%, 70%),
     hsl(var(--primary-hue), 10%, 40%)
