@@ -27,7 +27,7 @@
   );
 
   --surface-accent: light-dark(
-    hsl(var(--primary-hue), 25%, 87%),
+    hsl(var(--primary-hue), 25%, 90%),
     hsl(var(--primary-hue), 20%, 20%)
   );
 

@@ -227,11 +227,12 @@ select {
   font-size: 16px;
   max-width: 100%;
   min-width: 10rem;
+  height: 38px;
 }
 
-input,
-select {
-  height: 38px;
+select[multiple],
+textarea {
+  height: auto;
 }
 
 input:hover,
@@ -258,6 +259,12 @@ input[type="radio"]:hover {
   accent-color: var(--container-accent-hover);
 }
 
+option {
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 /* TABLE */
 
 table {
@@ -274,4 +281,24 @@ th,
 td {
   padding: 5px;
   border: 1px solid var(--border);
+}
+
+/* CONTENT BOXES */
+
+dialog {
+  margin: auto;
+  padding: 1.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: var(--surface-high);
+}
+
+dialog::backdrop {
+  background-color: var(--transparent-container-accent-hover);
+}
+
+details {
+  background-color: var(--surface-accent);
+  padding: 1rem;
+  border-radius: 0.25rem;
 }
