@@ -23,7 +23,7 @@
   <body>
     {{template "topBar" .}}
     <main class="app-shell">
-      {{template "sideBar" .}}
+      {{block "sideBar" .}} {{end}}
       <div class="content-scroll">{{template "main" .}}</div>
     </main>
   </body>

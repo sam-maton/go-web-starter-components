@@ -17,7 +17,7 @@ header {
   display: flex;
   background-color: var(--surface);
   border-bottom: 1px solid var(--border);
-  gap: 2.5rem;
+  gap: 1.5rem;
   padding: 1rem;
   flex: 0 0 5rem;
   align-items: center;
@@ -28,7 +28,7 @@ header {
 
   nav > ul {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 }
 
@@ -89,6 +89,14 @@ main.app-shell {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+/* Blog Page */
+main article {
+  max-width: 60ch;
+  padding: 1rem;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* Components Page */

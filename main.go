@@ -7,7 +7,8 @@ import (
 )
 
 type Application struct {
-	cache TemplateCache
+	cache     TemplateCache
+	blogCache TemplateCache
 }
 
 func main() {
@@ -23,11 +24,20 @@ func main() {
 
 	http.Handle("GET /static/", http.StripPrefix("/static", http.FileServer(http.Dir("./ui/static/"))))
 
-	http.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	http.Handle("GET /", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		app.render("home.html", w, r)
 	}))
 
-	http.Handle("/documentation", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	http.Handle("GET /blog/{slug}", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		slug := r.PathValue("slug")
+		app.render(fmt.Sprintf("%s.html", slug), w, r)
+	}))
+
+	http.Handle("GET /components", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		app.render("components.html", w, r)
+	}))
+
+	http.Handle("GET /documentation", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		app.render("documentation.html", w, r)
 	}))
 
