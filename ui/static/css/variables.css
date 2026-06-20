@@ -6,8 +6,8 @@
   --solid-hover-opacity: 10%;
   --solid-active-opacity: 20%;
 
-  --transparent-hover-opacity: 75%;
-  --transparent-active-opacity: 65%;
+  --transparent-hover-opacity: 90%;
+  --transparent-active-opacity: 80%;
 
   --state-mix: light-dark(transparent, transparent);
 

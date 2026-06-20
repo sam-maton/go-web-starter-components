@@ -18,6 +18,11 @@ func main() {
 		log.Fatal(err)
 	}
 
+	pages, err := blogPages()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	app := Application{
 		cache: templateCache,
 	}
@@ -25,20 +30,20 @@ func main() {
 	http.Handle("GET /static/", http.StripPrefix("/static", http.FileServer(http.Dir("./ui/static/"))))
 
 	http.Handle("GET /", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		app.render("home.html", w, r)
+		app.render("home.html", w, r, pages)
 	}))
 
 	http.Handle("GET /blog/{slug}", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		slug := r.PathValue("slug")
-		app.render(fmt.Sprintf("%s.html", slug), w, r)
+		app.render(fmt.Sprintf("%s.html", slug), w, r, nil)
 	}))
 
 	http.Handle("GET /components", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		app.render("components.html", w, r)
+		app.render("components.html", w, r, nil)
 	}))
 
 	http.Handle("GET /documentation", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		app.render("documentation.html", w, r)
+		app.render("documentation.html", w, r, nil)
 	}))
 
 	fmt.Println("Server started @ http://localhost:4321")
