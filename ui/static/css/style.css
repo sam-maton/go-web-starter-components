@@ -15,6 +15,7 @@ body {
 
 header {
   display: flex;
+  flex-wrap: wrap;
   background-color: var(--surface);
   border-bottom: 1px solid var(--border);
   gap: 1.5rem;
@@ -97,6 +98,15 @@ main article {
   padding: 1rem;
   margin: 0 auto;
   text-align: center;
+
+  ul {
+    list-style: none;
+  }
+
+  p {
+    padding-top: 1rem;
+    text-align: justify;
+  }
 }
 
 /* Components Page */
