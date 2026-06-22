@@ -7,15 +7,15 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"time"
 )
 
 type Metadata struct {
 	Title string
-	Date  time.Time
+	Date  string
+	URL   string
 }
 
-func (app *Application) render(page string, w http.ResponseWriter, r *http.Request, data interface{}) {
+func (app *Application) render(page string, w http.ResponseWriter, r *http.Request, data any) {
 	t, ok := app.cache[page]
 	if !ok {
 		http.Error(w, "Page not in cache", 500)
@@ -45,7 +45,10 @@ func blogPages() ([]Metadata, error) {
 
 		pageMetadata, err := parseMetadata(string(data))
 
-		fmt.Println(pageMetadata)
+		before, _ := strings.CutSuffix(filepath.Base(path), ".html")
+
+		pageMetadata.URL = before
+		pages = append(pages, pageMetadata)
 	}
 
 	return pages, nil
@@ -65,18 +68,14 @@ func parseMetadata(content string) (Metadata, error) {
 
 		parts := strings.SplitN(l, ":", 2)
 
-		key := parts[0]
-		value := parts[1]
+		key := strings.TrimSpace(parts[0])
+		value := strings.TrimSpace(parts[1])
 
 		switch strings.ToLower(key) {
 		case "title":
 			metadata.Title = value
 		case "date":
-			date, err := time.Parse("2006-01-02", value)
-			if err != nil {
-				return metadata, err
-			}
-			metadata.Date = date
+			metadata.Date = value
 		}
 	}
 

@@ -3,5 +3,13 @@
 {{define "main"}}
 <article>
   <h1>Blogs</h1>
+  <ul>
+    {{range .Pages}}
+    <li>
+      <a href="/blog/{{.URL}}">{{.Title}}</a> -
+      <time datetime="{{.Date}}">{{.Date}}</time>
+    </li>
+    {{end}}
+  </ul>
 </article>
 {{end}}
