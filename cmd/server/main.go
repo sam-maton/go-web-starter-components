@@ -6,11 +6,12 @@ import (
 	"net/http"
 
 	"github.com/sam-maton/go-web-starter-components/internal/blog"
+	"github.com/sam-maton/go-web-starter-components/internal/template"
 )
 
 type Application struct {
-	cache     TemplateCache
-	blogCache TemplateCache
+	cache     template.TemplateCache
+	blogCache template.TemplateCache
 }
 
 type templateData struct {
@@ -19,7 +20,7 @@ type templateData struct {
 
 func main() {
 
-	templateCache, err := newTemplateCache()
+	templateCache, err := template.NewTemplateCache()
 	if err != nil {
 		log.Fatal(err)
 	}

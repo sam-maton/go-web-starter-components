@@ -1,4 +1,4 @@
-package main
+package template
 
 import (
 	"html/template"
@@ -7,7 +7,7 @@ import (
 
 type TemplateCache map[string]*template.Template
 
-func newTemplateCache() (TemplateCache, error) {
+func NewTemplateCache() (TemplateCache, error) {
 	cache := make(TemplateCache)
 
 	pages, err := filepath.Glob("./ui/html/pages/*.html")
