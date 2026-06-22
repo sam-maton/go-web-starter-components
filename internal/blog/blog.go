@@ -1,9 +1,7 @@
-package main
+package blog
 
 import (
 	"fmt"
-	"log"
-	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
@@ -15,21 +13,7 @@ type Metadata struct {
 	URL   string
 }
 
-func (app *Application) render(page string, w http.ResponseWriter, r *http.Request, data any) {
-	t, ok := app.cache[page]
-	if !ok {
-		http.Error(w, "Page not in cache", 500)
-	}
-
-	err := t.Execute(w, data)
-	if err != nil {
-		log.Println(err)
-		http.Error(w, "Cannot execute template", 500)
-	}
-
-}
-
-func blogPages() ([]Metadata, error) {
+func BlogPages() ([]Metadata, error) {
 	pages := []Metadata{}
 
 	paths, err := filepath.Glob("./ui/html/blog/*.html")
