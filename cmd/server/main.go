@@ -9,11 +9,6 @@ import (
 	"github.com/sam-maton/go-web-starter-components/internal/template"
 )
 
-type Application struct {
-	cache     template.TemplateCache
-	blogCache template.TemplateCache
-}
-
 type templateData struct {
 	Pages []blog.Metadata
 }
@@ -30,8 +25,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	app := Application{
-		cache: templateCache,
+	app := template.Application{
+		Cache: templateCache,
 	}
 
 	data := templateData{
@@ -41,7 +36,7 @@ func main() {
 	http.Handle("GET /static/", http.StripPrefix("/static", http.FileServer(http.Dir("./ui/static/"))))
 
 	http.Handle("GET /", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		err := app.render("home.html", w, data)
+		err := app.Render("index.html", w, data)
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 		}
@@ -49,7 +44,7 @@ func main() {
 
 	http.Handle("GET /blog/{slug}", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		slug := r.PathValue("slug")
-		err := app.render(fmt.Sprintf("%s.html", slug), w, data)
+		err := app.Render(fmt.Sprintf("blog/%s.html", slug), w, data)
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 		}
@@ -57,7 +52,7 @@ func main() {
 	}))
 
 	http.Handle("GET /components", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		err := app.render("components.html", w, data)
+		err := app.Render("components.html", w, data)
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 		}
@@ -65,7 +60,7 @@ func main() {
 	}))
 
 	http.Handle("GET /documentation", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		err := app.render("documentation.html", w, data)
+		err := app.Render("documentation.html", w, data)
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 		}

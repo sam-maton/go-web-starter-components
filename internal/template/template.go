@@ -1,11 +1,17 @@
 package template
 
 import (
+	"errors"
 	"html/template"
+	"io"
 	"path/filepath"
 )
 
 type TemplateCache map[string]*template.Template
+
+type Application struct {
+	Cache TemplateCache
+}
 
 func NewTemplateCache() (TemplateCache, error) {
 	cache := make(TemplateCache)
@@ -42,7 +48,7 @@ func NewTemplateCache() (TemplateCache, error) {
 	}
 
 	for _, blog := range blogs {
-		name := filepath.Base(blog)
+		name := "blog/" + filepath.Base(blog)
 
 		t, err := template.ParseFiles("./ui/html/base.html", "./ui/html/partials/topbar.html")
 		if err != nil {
@@ -57,12 +63,26 @@ func NewTemplateCache() (TemplateCache, error) {
 		cache[name] = t
 	}
 
-	t, err := template.ParseFiles("./ui/html/base.html", "./ui/html/home.html", "./ui/html/partials/topbar.html")
+	t, err := template.ParseFiles("./ui/html/base.html", "./ui/html/index.html", "./ui/html/partials/topbar.html")
 	if err != nil {
 		return nil, err
 	}
 
-	cache["home.html"] = t
+	cache["index.html"] = t
 
 	return cache, nil
+}
+
+func (app *Application) Render(page string, w io.Writer, data any) error {
+	t, ok := app.Cache[page]
+	if !ok {
+		return errors.New("Page not in cache")
+	}
+
+	err := t.Execute(w, data)
+	if err != nil {
+		return errors.New("Cannot execute template")
+	}
+
+	return nil
 }
