@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-	"os"
-	"strings"
 
 	"github.com/sam-maton/go-web-starter-components/internal/blog"
 	"github.com/sam-maton/go-web-starter-components/internal/template"
@@ -35,18 +33,12 @@ func main() {
 	data := templateData{
 		Pages: pages,
 	}
-
 	cleanOutputDir()
 
-	for k := range app.Cache {
-		folder := "public/" + strings.TrimSuffix(k, ".html")
-		path := strings.TrimSuffix(folder, "index")
-		os.MkdirAll(path, 0755)
+	createPages(app, data)
 
-		f, err := os.Create(path + "/index.html")
-		check(err)
-		defer f.Close()
-
-		app.Render(k, f, data)
+	err = copyStaticFiles()
+	if err != nil {
+		fmt.Println(err)
 	}
 }
