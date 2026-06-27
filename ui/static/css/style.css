@@ -94,10 +94,12 @@ main.app-shell {
 
 /* Blog Page */
 main article {
-  max-width: 60ch;
-  padding: 1rem;
-  margin: 0 auto;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 60ch 1fr;
+  row-gap: 1rem;
+  justify-items: center;
+  max-width: 100%;
+  padding-inline: 1rem;
 
   ul {
     list-style: none;
@@ -106,6 +108,36 @@ main article {
   p {
     padding-top: 1rem;
     text-align: justify;
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
+
+main article > * {
+  grid-column: 2;
+  min-width: 0;
+}
+
+main article > pre {
+  grid-column: 1 / -1;
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 625px) {
+  main article {
+    grid-template-columns: 1fr;
+    padding-inline: 0.5rem;
+
+    p {
+      text-align: start;
+    }
+  }
+
+  main article > * {
+    grid-column: 1;
   }
 }
 

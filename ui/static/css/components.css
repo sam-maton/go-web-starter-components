@@ -65,6 +65,18 @@ h6[data-highlight] {
   color: var(--text-accent);
 }
 
+pre {
+  text-align: start;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--surface-accent);
+  padding: 0 1.5rem;
+}
+
+code {
+}
+
 /* LINKS */
 a {
   text-decoration: none;

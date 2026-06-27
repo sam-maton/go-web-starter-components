@@ -1,22 +1,49 @@
 <!-- 
 Title: Simpler web development with Go
-Date: 2026-06-17 
+Date: 2026-06-26
 -->
 {{define "title"}}Simpler web development with Go{{end}} {{define "main"}}
 <article>
   <h2>Simpler web development with Go</h2>
   <time datetime="2026-06-17">June 17, 2026</time>
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui provident
-    eveniet tenetur sapiente impedit aliquam dolorem dolore ducimus temporibus
-    in fuga aliquid omnis repellat beatae alias perspiciatis, assumenda earum
-    natus!
+    By now we are all well aware that using a frontend framework is a big
+    commitment. I have made a decent career out of committing to using them but
+    now that AI is here to write all that heavy, bloated code for me, I can
+    spend my spare time trying to write simpler web applications.
   </p>
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui provident
-    eveniet tenetur sapiente impedit aliquam dolorem dolore ducimus temporibus
-    in fuga aliquid omnis repellat beatae alias perspiciatis, assumenda earum
-    natus!
+    Of course I understand that simple, multi-page web applications are not
+    going to work for AI code editors or complex streaming platforms but writing
+    code without relying on a complex setup of tools and frameworks is really
+    enjoyable. And I think that enjoyment still really matters.
+  </p>
+  <p>
+    So that leads me to Go. It is so easy to get started with a simple static
+    site in Go.
+  </p>
+  <pre>
+    <code>
+package main
+
+import (
+  "fmt"
+  "net/http"
+)
+
+func main() {
+  http.Handle("GET /", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+    w.Write([]byte("&lt;h1&gt;Hello World&lt;/h1&gt;"))
+  }))
+
+  fmt.Println("Server started @ http://localhost:4000")
+  http.ListenAndServe(":4000", nil)
+}
+    </code>
+        </pre>
+  <p>
+    Let me introduce you to a book I read called
+    <a href="https://lets-go.alexedwards.net/">Let's Go</a> by Alex Edwards.
   </p>
 </article>
 
