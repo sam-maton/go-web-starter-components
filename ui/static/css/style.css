@@ -99,7 +99,7 @@ main article {
   row-gap: 1rem;
   justify-items: center;
   max-width: 100%;
-  padding-inline: 1rem;
+  padding: 1.5rem;
 
   ul {
     list-style: none;
@@ -126,10 +126,10 @@ main article > pre {
   min-width: 0;
 }
 
-@media (max-width: 625px) {
+@media (max-width: 660px) {
   main article {
     grid-template-columns: 1fr;
-    padding-inline: 0.5rem;
+    /* padding-inline: 0.5rem; */
 
     p {
       text-align: start;
@@ -138,6 +138,14 @@ main article > pre {
 
   main article > * {
     grid-column: 1;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    padding: 1rem;
   }
 }
 
