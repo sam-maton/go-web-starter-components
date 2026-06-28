@@ -1,6 +1,7 @@
 <!-- 
 Title: Simpler web development with Go
 Date: 2026-06-26
+Category: Go
 -->
 {{define "title"}}Simpler web development with Go{{end}} {{define "main"}}
 <article>
@@ -40,7 +41,25 @@ func main() {
   http.ListenAndServe(":4000", nil)
 }
     </code>
-        </pre>
+  </pre>
+  <p>
+    This gives us a simple web server which can be easily updated to handle
+    multiple routes. Of course for most use cases you don't want to inline your
+    HTML so we can make a small adjustment, bring in the html/template package
+    and use a template to render our HTML.
+  </p>
+  <pre>
+    <code>
+t, _ := template.ParseFiles("./index.html")
+t.Execute(w, nil)
+    </code>
+  </pre>
+  <p>
+    The Go html/template package is an amazing tool that really cemented my
+    choice to use Go for all my personal web development projects in the near
+    future. It gives you the ability to create reusable snippets such as
+    sidebars and headers
+  </p>
   <p>
     Let me introduce you to a book I read called
     <a href="https://lets-go.alexedwards.net/">Let's Go</a> by Alex Edwards.

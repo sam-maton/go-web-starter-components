@@ -8,9 +8,10 @@ import (
 )
 
 type Metadata struct {
-	Title string
-	Date  string
-	URL   string
+	Title    string
+	Date     string
+	Category string
+	URL      string
 }
 
 func BlogPages() ([]Metadata, error) {
@@ -60,6 +61,8 @@ func parseMetadata(content string) (Metadata, error) {
 			metadata.Title = value
 		case "date":
 			metadata.Date = value
+		case "category":
+			metadata.Category = value
 		}
 	}
 
