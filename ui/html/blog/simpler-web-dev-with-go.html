@@ -1,6 +1,6 @@
 <!-- 
 Title: Simpler web development with Go
-Date: 2026-06-26
+Date: 2026-06-30
 Category: Go
 -->
 {{define "title"}}Simpler web development with Go{{end}} {{define "main"}}
@@ -58,11 +58,60 @@ t.Execute(w, nil)
     The Go html/template package is an amazing tool that really cemented my
     choice to use Go for all my personal web development projects in the near
     future. It gives you the ability to create reusable snippets such as
-    sidebars and headers
+    sidebars and headers which can be used to build fairly complex page layouts
+    without the need to copy and paste code.
   </p>
   <p>
-    Let me introduce you to a book I read called
-    <a href="https://lets-go.alexedwards.net/">Let's Go</a> by Alex Edwards.
+    For example we can update our index.html template to include template slots
+    for a header and the main content like so:
+  </p>
+  <pre>
+    <code>
+&lt;body&gt;
+  &#123;&#123;template "header" .&#125;&#125;
+  &#123;&#123;template "main" .&#125;&#125;
+&lt;/body&gt;
+    </code>
+  </pre>
+  <p>
+    We can then define the header and main content in separate files like this:
+  </p>
+  <pre>
+    <code>
+// header.html
+&#123;&#123;define "header"&#125;&#125;
+  &lt;header&gt;
+      ...
+  &lt;/header&gt;
+&#123;&#123;end&#125;&#125;
+
+// home.html
+&#123;&#123;define "main"&#125;&#125;
+  &lt;main&gt;
+    &lt;h1&gt;Home page&lt;/h1&gt;
+  &lt;/main&gt;
+&#123;&#123;end&#125;&#125;
+    </code>
+  </pre>
+  <p>
+    And then we simply parse the files together in our http handler for the "/"
+    route.
+  </p>
+  <pre>
+    <code>
+t, _ := template.ParseFiles("./index.html", "./header.html", "./home.html")
+t.Execute(w, nil)
+    </code>
+  </pre>
+  <p>
+    If we then need to create another route we can simply invoke the "main"
+    template in a different file and add it's path to the 'ParseFiles' call
+    instead of "./home.html". That new page will still have the same base html
+    layout from the index file and the header markup.
+  </p>
+  <p>
+    And there we have it! A nice simple web app in Go that is easy to manage
+    thanks to Go's templating package.
   </p>
 </article>
 
