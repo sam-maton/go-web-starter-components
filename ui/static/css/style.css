@@ -1,3 +1,6 @@
+:root {
+  --article-width: 80ch;
+}
 * {
   box-sizing: border-box;
 }
@@ -95,7 +98,7 @@ main.app-shell {
 /* Blog Page */
 main article {
   display: grid;
-  grid-template-columns: 1fr 60ch 1fr;
+  grid-template-columns: 1fr var(--article-width) 1fr;
   row-gap: 1rem;
   justify-items: center;
   max-width: 100%;
@@ -103,10 +106,9 @@ main article {
 
   ul {
     list-style: none;
-  }
-
-  li {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   p {
@@ -127,7 +129,7 @@ main article > * {
 main article > pre {
   grid-column: 1 / -1;
   max-width: 100%;
-  min-width: 60ch;
+  min-width: var(--article-width);
 }
 
 @media (max-width: 660px) {

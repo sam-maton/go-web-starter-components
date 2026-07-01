@@ -2,15 +2,22 @@
 <!-- Main -->
 {{define "main"}}
 <article>
-  <h1>Blogs</h1>
+  <p>
+    I am a web developer that is currently trying to explore a simpler and more
+    enjoyable way of building web applications free from complex frameworks and
+    a heavy reliance on npm packages. I am using Go, HTML, CSS and (a sprinkling
+    of) vanilla Javascript to see what I can achieve with these basic web
+    technologies.
+  </p>
+  <h2>Blogs</h2>
   <ul>
-    {{range .Pages}}
+    {{range .Pages}} {{if not .Draft}}
     <li>
+      <span class="blog-category" data-type="{{.Category}}"></span>
       <a href="/blog/{{.URL}}">{{.Title}}</a> -
       <time datetime="{{.Date}}">{{.Date}}</time>
-      <span class="blog-category" data-type="{{.Category}}"></span>
     </li>
-    {{end}}
+    {{end}} {{end}}
   </ul>
 </article>
 {{end}}

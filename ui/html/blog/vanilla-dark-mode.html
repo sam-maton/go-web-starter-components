@@ -1,0 +1,74 @@
+<!-- 
+  Title: CSS light-dark() theme switching
+  Date: 2026-07-01
+  Category: JS
+  Draft
+  -->
+{{define "title"}}Theme switching with the CSS light-dark() function{{end}}
+{{define "main"}}
+<article>
+  <p>
+    Recently I created some base styles for commonly used HTML elements so my
+    new projects could start with some decent baseline styles without me having
+    to do any work. You can find these styled elements on the
+    <a href="/components">components</a> page.
+  </p>
+  <p>
+    I decided to make use of the relatively new (baseline 2024) CSS light-dark()
+    function to create all of my CSS variables. This allows me to handle both
+    light and dark themes in one place without any extra CSS. For example:
+  </p>
+  <pre>
+    <code>
+:root {
+  color-scheme: light dark;
+
+  --primary-hue: 220;
+
+  --bg: light-dark(
+    hsl(var(--primary-hue), 10%, 90%),
+    hsl(var(--primary-hue), 10%, 10%)
+  );
+
+  --surface: light-dark(
+    hsl(var(--primary-hue), 10%, 95%),
+    hsl(var(--primary-hue), 10%, 15%)
+  );
+
+  --surface-high: light-dark(
+    hsl(var(--primary-hue), 10%, 100%),
+    hsl(var(--primary-hue), 10%, 20%)
+  );
+}
+    </code>
+  </pre>
+  <p>
+    And just like that I have light and dark themed background and surface
+    colors, nice. Even if we stop here, users that have their system set to
+    light or dark mode will automatically get the correct theme. But what if we
+    want to give users the ability to switch their theme? Well, with a little
+    bit of Javascript we can do just that. Lets start with hooking up the theme
+    toggle button:
+  </p>
+  <pre>
+    <code>
+themeToggle.addEventListener("click", () => {
+  const root = document.documentElement;
+  const currentTheme = root.getAttribute("data-theme");
+
+  if (currentTheme) {
+    const next = currentTheme === "light" ? "dark" : "light";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    return;
+  }
+
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const next = prefersDark ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+});
+    </code>
+  </pre>
+</article>
+{{end}}

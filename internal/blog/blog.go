@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
+	"time"
 )
 
 type Metadata struct {
@@ -12,6 +14,7 @@ type Metadata struct {
 	Date     string
 	Category string
 	URL      string
+	Draft    bool
 }
 
 func BlogPages() ([]Metadata, error) {
@@ -36,6 +39,18 @@ func BlogPages() ([]Metadata, error) {
 		pages = append(pages, pageMetadata)
 	}
 
+	slices.SortFunc(pages, func(a, b Metadata) int {
+		aDate, err := time.Parse("2006-01-02", a.Date)
+		if err != nil {
+			return 0
+		}
+		bDate, err := time.Parse("2006-01-02", b.Date)
+		if err != nil {
+			return 0
+		}
+		return bDate.Compare(aDate)
+	})
+
 	return pages, nil
 }
 
@@ -53,8 +68,14 @@ func parseMetadata(content string) (Metadata, error) {
 
 		parts := strings.SplitN(l, ":", 2)
 
+		var value string
 		key := strings.TrimSpace(parts[0])
-		value := strings.TrimSpace(parts[1])
+
+		if len(parts) > 1 {
+			value = strings.TrimSpace(parts[1])
+		}
+
+		metadata.Draft = false
 
 		switch strings.ToLower(key) {
 		case "title":
@@ -63,6 +84,8 @@ func parseMetadata(content string) (Metadata, error) {
 			metadata.Date = value
 		case "category":
 			metadata.Category = value
+		case "draft":
+			metadata.Draft = true
 		}
 	}
 
