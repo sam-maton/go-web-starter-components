@@ -71,5 +71,53 @@ themeToggle.addEventListener("click", () => {
 });
     </code>
   </pre>
+  <p>
+    First, this code will check to if the 'data-theme' attribute has been set on
+    the root element, this will only be set if the user has clicked this button
+    before. If this is set then simply just update the attrtibute to the
+    opposite them. If not then we check to see if the user has a dark theme
+    prference set on their system and then set the theme based on that. In both
+    cases we also save the the theme to local storage so that we can check it
+    again when the page is reloaded.
+  </p>
+  <p>
+    Now something you may have seen before is a slight flash of the wrong theme
+    when the page is first loaded. This is because the browser will load the
+    page and then run our Javascript to set the theme. To fix this we can add a
+    super small script to the head of our page or base layout:
+  </p>
+  <pre>
+    <code>
+const storedTheme = localStorage.getItem("theme");
+if (storedTheme) {
+  document.documentElement.setAttribute("data-theme", storedTheme);
+}
+    </code>
+  </pre>
+  <p>
+    This will simply set the data-theme attribute on the root element before the
+    page is rendered so that the correct theme is applied immediately.
+  </p>
+  <p>
+    Now we just need to add a little bit of CSS to handle the theme switching.
+    Currently our light-dark() function is not respecting our data-theme
+    attribute and is instead using the system preference. To fix this we can add
+    a few lines of CSS to force the theme based on the data-theme attribute:
+  </p>
+  <pre>
+    <code>
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+    </code>
+  </pre>
+  <p>
+    And just like that we have a working theme switcher using CSS variables that
+    only need to be defined once!
+  </p>
 </article>
 {{end}}
