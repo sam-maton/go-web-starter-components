@@ -48,7 +48,13 @@ func main() {
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 		}
+	}))
 
+	http.Handle("GET /elements", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		err := app.Render("elements.html", w, data)
+		if err != nil {
+			http.Error(w, err.Error(), 500)
+		}
 	}))
 
 	http.Handle("GET /components", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -56,7 +62,6 @@ func main() {
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 		}
-
 	}))
 
 	http.Handle("GET /documentation", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -64,7 +69,6 @@ func main() {
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 		}
-
 	}))
 
 	fmt.Println("Server started @ http://localhost:4321")
