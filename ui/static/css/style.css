@@ -70,11 +70,10 @@ main.app-shell {
   gap: 0.5rem;
 
   svg {
-    background-color: var(--container-accent);
-    padding: 0.25rem;
+    padding: 0 0.25rem;
     box-sizing: content-box;
     border-radius: 0.25rem;
-    color: var(--text-inverse);
+    color: var(--text-accent);
   }
 }
 

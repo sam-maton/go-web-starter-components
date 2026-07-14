@@ -1,0 +1,21 @@
+/* DROPDOWN MENU */
+button#anchor {
+  anchor-name: --button-anchor;
+}
+span#tooltip {
+  position: absolute;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  background-color: var(--surface-high);
+  border-radius: 0.5rem;
+  display: none;
+  position-anchor: --button-anchor;
+  position-area: top;
+  position-try-fallbacks: bottom;
+  margin: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+span#tooltip.show {
+  display: block;
+}
