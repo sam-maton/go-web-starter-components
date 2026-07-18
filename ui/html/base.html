@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/static/css/style.css" />
     <link rel="stylesheet" href="/static/css/elements.css" />
     <link rel="stylesheet" href="/static/css/components.css" />
+    <link rel="stylesheet" href="/static/external/prism/prism.css" />
     <link rel="icon" type="image/x-icon" href="/static/favicon/favicon.ico" />
     <script>
       const storedTheme = localStorage.getItem("theme");
@@ -29,6 +30,7 @@
       <div class="content-scroll">{{template "main" .}}</div>
     </main>
   </body>
+  <script src="/static/external/prism/prism.js"></script>
   <script src="/static/js/app.js"></script>
   {{ block "scripts" .}} {{end}}
 </html>

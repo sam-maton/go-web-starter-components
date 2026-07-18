@@ -20,7 +20,7 @@
     light and dark themes in one place without any extra CSS. For example:
   </p>
   <pre>
-    <code>
+    <code class="language-css">
 :root {
   color-scheme: light dark;
 
@@ -52,7 +52,7 @@
     toggle button:
   </p>
   <pre>
-    <code>
+    <code class="language-js">
 themeToggle.addEventListener("click", () => {
   const root = document.documentElement;
   const currentTheme = root.getAttribute("data-theme");
@@ -87,7 +87,7 @@ themeToggle.addEventListener("click", () => {
     super small script to the head of our page or base layout:
   </p>
   <pre>
-    <code>
+    <code class="language-js">
 const storedTheme = localStorage.getItem("theme");
 if (storedTheme) {
   document.documentElement.setAttribute("data-theme", storedTheme);
@@ -105,7 +105,7 @@ if (storedTheme) {
     a few lines of CSS to force the theme based on the data-theme attribute:
   </p>
   <pre>
-    <code>
+    <code class="language-css">
 :root[data-theme="light"] {
   color-scheme: light;
 }

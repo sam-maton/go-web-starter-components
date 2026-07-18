@@ -9,8 +9,6 @@
   --transparent-hover-opacity: 90%;
   --transparent-active-opacity: 80%;
 
-  --state-mix: light-dark(transparent, transparent);
-
   --bg: light-dark(
     hsl(var(--primary-hue), 10%, 90%),
     hsl(var(--primary-hue), 10%, 10%)
@@ -36,7 +34,7 @@
     hsl(var(--primary-hue), 0%, 80%)
   );
 
-  --backdrop-resting: color-mix(in hsl, var(--backdrop), var(--state-mix) 20%);
+  --backdrop-resting: color-mix(in hsl, var(--backdrop), transparent 20%);
 
   --border: light-dark(
     hsl(var(--primary-hue), 10%, 70%),
@@ -101,13 +99,13 @@
   --container-accent-hover: color-mix(
     in hsl,
     var(--container-accent),
-    var(--state-mix) var(--solid-hover-opacity)
+    transparent var(--solid-hover-opacity)
   );
 
   --container-accent-active: color-mix(
     in hsl,
     var(--container-accent),
-    var(--state-mix) var(--solid-active-opacity)
+    transparent var(--solid-active-opacity)
   );
 
   --container-accent-disabled: light-dark(
@@ -118,13 +116,13 @@
   --transparent-container-accent-hover: color-mix(
     in hsl,
     var(--container-accent),
-    var(--state-mix) var(--transparent-hover-opacity)
+    transparent var(--transparent-hover-opacity)
   );
 
   --transparent-container-accent-active: color-mix(
     in hsl,
     var(--container-accent),
-    var(--state-mix) var(--transparent-active-opacity)
+    transparent var(--transparent-active-opacity)
   );
 
   --shadow:
