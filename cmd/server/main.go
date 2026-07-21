@@ -64,6 +64,13 @@ func main() {
 		}
 	}))
 
+	http.Handle("GET /css-variables", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		err := app.Render("css-variables.html", w, data)
+		if err != nil {
+			http.Error(w, err.Error(), 500)
+		}
+	}))
+
 	http.Handle("GET /documentation", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		err := app.Render("documentation.html", w, data)
 		if err != nil {
