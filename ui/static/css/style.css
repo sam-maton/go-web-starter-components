@@ -239,16 +239,21 @@ main article > pre {
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: 0.5rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  flex-wrap: wrap;
 }
 
 .color-card {
   display: flex;
-  flex-direction: column;
   gap: 0.5rem;
-  flex: 1;
+  align-items: center;
+}
+
+.color-card:hover {
+  .color-swatch {
+    scale: 1.05;
+  }
 }
 
 .color-card > code {
@@ -258,7 +263,9 @@ main article > pre {
 
 .color-swatch {
   display: inline-block;
-  padding: 2rem 4rem;
+  padding: 2rem clamp(0px, 25%, 4rem);
   border: 1px solid var(--border);
   border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  transition: scale 0.2s ease;
 }
