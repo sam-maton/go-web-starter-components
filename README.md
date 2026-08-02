@@ -9,3 +9,4 @@ I thought it would be useful to share so I have sort of expanded it to become my
 - [ ] Add menu for mobile view
 - [ ] Check focus state of elements
 - [ ] Add details to CSS variables page
+- [ ] Update code sytnax highlghting to use light and dark variables

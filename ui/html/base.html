@@ -29,6 +29,39 @@
       {{block "sideBar" .}} {{end}}
       <div class="content-scroll">{{template "main" .}}</div>
     </main>
+    <dialog class="mobile-menu" id="mobile-menu">
+      <section>
+        <div class="mobile-controls">
+          <button data-icon commandfor="mobile-menu" command="close">
+            <svg width="24" height="24" aria-hidden="true">
+              <use href="/static/svg/sprite.svg#icon-close"></use>
+            </svg>
+          </button>
+          <select name="color" id="mobile-color-theme">
+            <option value="220">Blue</option>
+            <option value="270">Purple</option>
+            <option value="28">Orange</option>
+            <option value="0">Red</option>
+          </select>
+          <button id="mobile-theme-toggle" data-icon>
+            <svg width="24" height="24" aria-hidden="true">
+              <use href="/static/svg/sprite.svg#icon-light-dark"></use>
+            </svg>
+          </button>
+        </div>
+      </section>
+      <section>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/elements">Elements</a></li>
+            <!-- <li><a href="/components">Components</a></li> -->
+            <li><a href="/css-variables">CSS Variables</a></li>
+            <!-- <li><a href="/documentation">Documentation</a></li> -->
+          </ul>
+        </nav>
+      </section>
+    </dialog>
   </body>
   <script src="/static/external/prism/prism.js"></script>
   <script src="/static/js/app.js"></script>
